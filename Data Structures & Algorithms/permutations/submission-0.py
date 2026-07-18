@@ -1,0 +1,16 @@
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        def helper(i,nums):
+            if i ==len(nums):
+                return[[]]
+            res=[]
+
+            perms=helper(i+1,nums)
+            for p in perms:
+                for j in range(len(p)+1):
+                    copyy=p.copy()
+                    copyy.insert(j,nums[i])
+                    res.append(copyy)
+            return res
+
+        return helper(0,nums)
